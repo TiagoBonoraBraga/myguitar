@@ -12,3 +12,15 @@
   color: white;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
 }
+
+.Home__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 350px) {
+  .Home__container {
+    justify-content: unset;
+  }
+}
