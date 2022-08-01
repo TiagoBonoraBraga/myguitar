@@ -11,14 +11,18 @@ function BandaLista() {
     setBandaSelecionada({ ...bandaSelecionada, ...banda }); //passa a paletaselecionada  e acrescenta o click, apos é só criar a config do botao abaixo e depois criar o span para modificar o valor dos clicks
   };
 
+  // possue dois parametros a 1° a condição e 2° a index da banda selecionada
+  //se o canRender for true ele renderiza o span senao não
+
+  const badgeCounter = (canRender, index) =>
+	Boolean(canRender) && (<span className="BandaListaItem__badge"> {bandaSelecionada[index]} </span>);
+
+
   return (
     <div className="BandaLista">
       {bandas.map((banda, index) => (
         <div className="BandaListaItem" key={`BandaListaItem-${index}`}>
-          <span className="BandaListaItem__badge">
-            {" "}
-            {bandaSelecionada[index] || 0}{" "}
-          </span>
+          {badgeCounter(bandaSelecionada[index], index)}
           <div>
             <div className="BandaListaItem__titulo">{banda.titulo}</div>
             <div className="BandaListaItem__descricao">{banda.descricao}</div>
