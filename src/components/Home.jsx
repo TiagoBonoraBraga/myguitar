@@ -8,7 +8,7 @@ function Home() {
       <div className="Home__header Header">
         <div className="row">
           <div className="Header__logo Logo">
-            <span className="Logo__titulo"> Bands Store</span>
+            <span className="Logo__titulo"> My Guitar - Bands Store</span>
           </div>
           <div className="Header__opcoes Opcoes">
             <div className="Opcoes__sacola Sacola">
