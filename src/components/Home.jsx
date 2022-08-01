@@ -1,7 +1,6 @@
 import BandaLista from "./BandaLista";
 import "./Home.css";
 import sacola from "../assets/icons/sacola.svg";
-import logo from "../assets/logo.svg";
 
 function Home() {
   return (
@@ -9,12 +8,6 @@ function Home() {
       <div className="Home__header Header">
         <div className="row">
           <div className="Header__logo Logo">
-            <img
-              src={logo}
-              width="70px"
-              alt="Logo"
-              className="Logo__icone"
-            />
             <span className="Logo__titulo"> Bands Store</span>
           </div>
           <div className="Header__opcoes Opcoes">

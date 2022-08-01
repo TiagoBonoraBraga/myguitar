@@ -12,7 +12,7 @@ export const bandas = [
       foto: require("../assets/imagens/semfuturo.jpg"),      
     },
     {
-      titulo: "Tripanossoma",
+      titulo: "Tripa",
       descricao:
         "Estilo: Metal Punk",
       foto: require("../assets/imagens/tripa.jpg"),      
