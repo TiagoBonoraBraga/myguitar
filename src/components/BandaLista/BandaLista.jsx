@@ -1,5 +1,5 @@
 import React, { useState } from "react"; //importando o usestate
-import { bandas } from "../mocks/bandas.js";
+import { bandas } from "mocks/bandas.js";
 import "./BandaLista.css";
 function BandaLista() {
   const [bandaSelecionada, setBandaSelecionada] = useState({}); // dentro do colchete bandaSelecionada é o valor atual e setBandaSelecionada é a função q vai auterar o valor atual q recebe o valor inicial do state q no caso é vazio pois ainda nao foi selecionada a banda

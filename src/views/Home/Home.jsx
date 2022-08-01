@@ -1,6 +1,6 @@
-import BandaLista from "./BandaLista";
+import BandaLista from "components/BandaLista/BandaLista";
 import "./Home.css";
-import sacola from "../assets/icons/sacola.svg";
+import sacola from "assets/icons/sacola.svg";
 
 function Home() {
   return (
