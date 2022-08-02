@@ -25,7 +25,13 @@ function BandaLista() {
   return (
     <div className="BandaLista">
       {bandas.map((banda, index) => (
-       <BandaListaItem key={`BandaListaItem-${index}`} />
+       <BandaListaItem 
+          key={`BandaListaItem-${index}`}
+          banda={banda}
+          quantidadeSelecionada={bandaSelecionada[index]}
+          index ={index}
+          onRemove={index => removerItem(index)}
+          onAdd={index => adicionarItem(index)} />
       ))}
     </div>
   );
