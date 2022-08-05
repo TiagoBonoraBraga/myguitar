@@ -1,8 +1,9 @@
-import React, { useState } from "react"; //importando o usestate
-import { bandas } from "mocks/bandas.js";
+import React, { useState, useEffect} from "react"; //importando o usestate
 import "./BandaLista.css";
 import BandaListaItem from "components/BandaListaItem/BandaListaItem";
+import {BandaService} from "services/BandaService"
 function BandaLista() {
+  const [bandas, setBandas] = useState([])
   const [bandaSelecionada, setBandaSelecionada] = useState({}); // dentro do colchete bandaSelecionada é o valor atual e setBandaSelecionada é a função q vai auterar o valor atual q recebe o valor inicial do state q no caso é vazio pois ainda nao foi selecionada a banda
 
   const adicionarItem = (bandaIndex) => {
@@ -18,6 +19,15 @@ function BandaLista() {
     };
     setBandaSelecionada({ ...bandaSelecionada, ...banda });
   };
+
+  const getLista = async () => {
+    const response = await BandaService.getLista();
+    setBandas(response);
+  }
+
+  useEffect(()=>{
+    getLista();
+  },[]);
 
   // possue dois parametros a 1° a condição e 2° a index da banda selecionada
   //se o canRender for true ele renderiza o span senao não

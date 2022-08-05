@@ -18,7 +18,8 @@ function BandaListaItem({banda, quantidadeSelecionada, index, onRemove, onAdd}) 
     <div className="BandaListaItem" >
       {badgeCounter(quantidadeSelecionada, index)}
       <div>
-        <div className="BandaListaItem__titulo">{banda.titulo}</div>
+        <div className="BandaListaItem__titulo">{banda.nome}</div>
+        <div className="BandaListaItem__estilo">{banda.estilo}</div>
         <div className="BandaListaItem__descricao">{banda.descricao}</div>
         <div className="BandaListaItem__acoes Acoes">
           <button
@@ -32,7 +33,7 @@ function BandaListaItem({banda, quantidadeSelecionada, index, onRemove, onAdd}) 
           {removeButton(quantidadeSelecionada, index)}
         </div>
       </div>
-      <img className="BandaListaItem__foto" src={banda.foto} alt="" />
+      <img className="BandaListaItem__foto" src={banda.foto} alt="foto" />
     </div>
   );
 }
