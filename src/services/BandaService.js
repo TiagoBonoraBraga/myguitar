@@ -2,13 +2,22 @@ import {Api} from "helpers/Api";
 
 const parseResponse = (response) => response.json();
 
+const transformBanda = (banda) => {
+     
+    return {
+      ...banda,    
+   
+    };
+  };
 
+const parseTransformItem = (response) =>
+ parseResponse(response).then(transformBanda)
 
 export const BandaService = {
     getLista: () =>
         fetch(Api.bandaLista(), { method: "GET"}).then(parseResponse),
     getById: (id) =>
-        fetch(Api.bandaById(id), { method: "GET"}).then(parseResponse),
+        fetch(Api.bandaById(id), { method: "GET"}).then(parseTransformItem),
     create: () =>
         fetch(Api.createBanda(), { method: "POST"}).then(parseResponse),
     updateById: (id) =>

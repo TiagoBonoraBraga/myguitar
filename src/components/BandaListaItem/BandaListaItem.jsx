@@ -1,11 +1,22 @@
 import "./BandaListaItem.css";
 
-function BandaListaItem({banda, quantidadeSelecionada, index, onRemove, onAdd}) {
- 
-   
+function BandaListaItem({
+  banda,
+  quantidadeSelecionada,
+  index,
+  onRemove,
+  onAdd,
+  clickItem,
+}) {
   const removeButton = (canRender, index) =>
     Boolean(canRender) && (
-      <button className="Acoes__remover" onClick={() => onRemove(index)}>
+      <button
+        className="Acoes__remover"
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemove(index);
+        }}
+      >
         remover
       </button>
     );
@@ -15,18 +26,18 @@ function BandaListaItem({banda, quantidadeSelecionada, index, onRemove, onAdd}) 
       <span className="BandaListaItem__badge"> {quantidadeSelecionada} </span>
     );
   return (
-    <div className="BandaListaItem" >
+    <div className="BandaListaItem" onClick={() => clickItem(banda.id)}>
       {badgeCounter(quantidadeSelecionada, index)}
       <div>
-        <div className="BandaListaItem__titulo">{banda.nome}</div>
+        <div className="BandaListaItem__nome">{banda.nome}</div>
         <div className="BandaListaItem__estilo">{banda.estilo}</div>
         <div className="BandaListaItem__descricao">{banda.descricao}</div>
         <div className="BandaListaItem__acoes Acoes">
           <button
             className={`Acoes__adicionar ${
               !quantidadeSelecionada && "Acoes__adicionar--preencher"
-            }`} //mudar o tamanho do botao com click
-            onClick={() => onAdd(index)} //add o index da paleta e ativa a função paraadd item passando o index da banda selecionada.
+            }`} 
+            onClick={(e) =>{ e.stopPropagation(); onAdd(index); }} 
           >
             adicionar
           </button>

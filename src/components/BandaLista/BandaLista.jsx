@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from "react"; //importando o usestate
 import "./BandaLista.css";
 import BandaListaItem from "components/BandaListaItem/BandaListaItem";
-import {BandaService} from "services/BandaService"
+import {BandaService} from "services/BandaService";
+import BandaDetalhesModal from 'components/BandaDetalhesModal/BandaDetalhesModal';
 function BandaLista() {
-  const [bandas, setBandas] = useState([])
-  const [bandaSelecionada, setBandaSelecionada] = useState({}); // dentro do colchete bandaSelecionada é o valor atual e setBandaSelecionada é a função q vai auterar o valor atual q recebe o valor inicial do state q no caso é vazio pois ainda nao foi selecionada a banda
+  const [bandas, setBandas] = useState([]);
+  const [bandaSelecionada, setBandaSelecionada] = useState({}); 
+  const [bandaModal, setBandaModal] = useState(false);
 
   const adicionarItem = (bandaIndex) => {
     const banda = {
@@ -25,6 +27,11 @@ function BandaLista() {
     setBandas(response);
   }
 
+  const getBandaById = async (bandaId) =>{
+    const response = await BandaService.getById(bandaId);
+    setBandaModal(response);
+  }
+
   useEffect(()=>{
     getLista();
   },[]);
@@ -41,8 +48,10 @@ function BandaLista() {
           quantidadeSelecionada={bandaSelecionada[index]}
           index ={index}
           onRemove={index => removerItem(index)}
-          onAdd={index => adicionarItem(index)} />
+          onAdd={index => adicionarItem(index)}
+          clickItem={(bandaId)=> getBandaById(bandaId)} />
       ))}
+      {bandaModal && <BandaDetalhesModal banda={bandaModal} closeModal={()=> setBandaModal(false)}/>}
     </div>
   );
 }
