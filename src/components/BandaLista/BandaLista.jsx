@@ -7,6 +7,7 @@ function BandaLista() {
   const [bandas, setBandas] = useState([]);
   const [bandaSelecionada, setBandaSelecionada] = useState({}); 
   const [bandaModal, setBandaModal] = useState(false);
+  
 
   const adicionarItem = (bandaIndex) => {
     const banda = {
@@ -36,8 +37,7 @@ function BandaLista() {
     getLista();
   },[]);
 
-  // possue dois parametros a 1° a condição e 2° a index da banda selecionada
-  //se o canRender for true ele renderiza o span senao não
+  
 
   return (
     <div className="BandaLista">

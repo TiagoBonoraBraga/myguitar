@@ -2,16 +2,8 @@ import {Api} from "helpers/Api";
 
 const parseResponse = (response) => response.json();
 
-const transformBanda = (banda) => {
-     
-    return {
-      ...banda,    
-   
-    };
-  };
-
 const parseTransformItem = (response) =>
- parseResponse(response).then(transformBanda)
+ parseResponse(response)
 
 export const BandaService = {
     getLista: () =>
