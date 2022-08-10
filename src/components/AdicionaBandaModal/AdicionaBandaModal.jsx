@@ -108,7 +108,7 @@ const createBanda = async () => {
               className="AdicionaBandaModal__foto"
               type="file"
               id="foto"
-              accept="imagens/png, imagens/gif, imagens.jpeg, imagens.jpg"
+              accept="image/png, image/gif, image.jpeg, image.jpg"
               value={state.foto}
               onChange={(e) => handleChange(e, "foto")}
               required
