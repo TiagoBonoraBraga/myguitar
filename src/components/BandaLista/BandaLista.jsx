@@ -1,13 +1,12 @@
-import React, { useState, useEffect} from "react"; //importando o usestate
+import React, { useState, useEffect } from "react"; //importando o usestate
 import "./BandaLista.css";
 import BandaListaItem from "components/BandaListaItem/BandaListaItem";
-import {BandaService} from "services/BandaService";
-import BandaDetalhesModal from 'components/BandaDetalhesModal/BandaDetalhesModal';
-function BandaLista() {
+import { BandaService } from "services/BandaService";
+import BandaDetalhesModal from "components/BandaDetalhesModal/BandaDetalhesModal";
+function BandaLista({ bandaCriada }) {
   const [bandas, setBandas] = useState([]);
-  const [bandaSelecionada, setBandaSelecionada] = useState({}); 
+  const [bandaSelecionada, setBandaSelecionada] = useState({});
   const [bandaModal, setBandaModal] = useState(false);
-  
 
   const adicionarItem = (bandaIndex) => {
     const banda = {
@@ -26,32 +25,47 @@ function BandaLista() {
   const getLista = async () => {
     const response = await BandaService.getLista();
     setBandas(response);
-  }
+    console.log(response);
+  };
 
-  const getBandaById = async (bandaId) =>{
+  const getBandaById = async (bandaId) => {
     const response = await BandaService.getById(bandaId);
+    console.log(response, bandaId);
     setBandaModal(response);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getLista();
-  },[]);
+  }, []);
 
-  
+  const adicionaBandaNaLista = (banda) => {
+    const lista = [...bandas, banda];
+    setBandas(lista);
+  };
+
+  useEffect(() => {
+    if (bandaCriada) adicionaBandaNaLista(bandaCriada);
+  }, [bandaCriada]);
 
   return (
     <div className="BandaLista">
       {bandas.map((banda, index) => (
-       <BandaListaItem 
+        <BandaListaItem
           key={`BandaListaItem-${index}`}
           banda={banda}
           quantidadeSelecionada={bandaSelecionada[index]}
-          index ={index}
-          onRemove={index => removerItem(index)}
-          onAdd={index => adicionarItem(index)}
-          clickItem={(bandaId)=> getBandaById(bandaId)} />
+          index={index}
+          onRemove={(index) => removerItem(index)}
+          onAdd={(index) => adicionarItem(index)}
+          clickItem={(bandaId) => getBandaById(bandaId)}
+        />
       ))}
-      {bandaModal && <BandaDetalhesModal banda={bandaModal} closeModal={()=> setBandaModal(false)}/>}
+      {bandaModal && (
+        <BandaDetalhesModal
+          banda={bandaModal}
+          closeModal={() => setBandaModal(false)}
+        />
+      )}
     </div>
   );
 }

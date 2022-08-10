@@ -32,11 +32,15 @@
   }
   
   .BandaListaItem__descricao {
-    font-size: 0.85em;
+    font-size: 0.70em;
     width: 100%;
     object-fit: contain;
   }
-  
+  .BandaListaItem__estilo {
+    font-size: 0.95em;
+    width: 100%;
+    object-fit: contain;
+  }
   .Acoes {
     display: flex;
     justify-content: space-between;
