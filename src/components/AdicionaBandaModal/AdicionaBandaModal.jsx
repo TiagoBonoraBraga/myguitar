@@ -42,7 +42,7 @@ const createBanda = async () => {
         nome,
         estilo,
         descricao,
-        foto: `assets/images/${renomeiaCaminhoFoto(foto)}`
+        foto: `assets/imagens/${renomeiaCaminhoFoto(foto)}`
     }
 
     const response = await BandaService.create(banda);
