@@ -10,7 +10,7 @@ function BandaDetalhesModal({banda, closeModal}){
                     <div className="BandaDetalhesModal__estilo"><b>Estilo:</b>{banda.estilo}</div>
                     <div className="BandaDetalhesModal__descricao"><b>Descrição:</b>{banda.descricao}</div>
                 </div>
-                <img src={banda.foto} alt={`Banda de ${banda.nome}`} className="BandaDetalhesModal__foto" />
+                <img src={banda.foto} alt={`Banda de ${banda.estilo}`} className="BandaDetalhesModal__foto" />
             </div>
         </Modal>
     )

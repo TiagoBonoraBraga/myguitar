@@ -30,7 +30,7 @@ function BandaLista({ bandaCriada }) {
 
   const getBandaById = async (bandaId) => {
     const response = await BandaService.getById(bandaId);
-    console.log(response, bandaId);
+    // console.log(response, bandaId);
     setBandaModal(response);
   };
 
