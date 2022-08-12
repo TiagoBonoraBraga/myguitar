@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
-import "./AdicionaBandaModal.css";
+import "./AdicionaEditaBandaModal.css";
 import { BandaService } from "services/BandaService";
 
-function AdicionaBandaModal({ closeModal, onCreateBanda }) {
+function AdicionaEditaBandaModal({ closeModal, onCreateBanda }) {
   const form = {
     nome: "",
     estilo: "",
@@ -122,4 +122,4 @@ const createBanda = async () => {
     </Modal>
   );
 }
-export default AdicionaBandaModal;
+export default AdicionaEditaBandaModal;

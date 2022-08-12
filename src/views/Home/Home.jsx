@@ -2,7 +2,7 @@ import { useState } from "react";
 import BandaLista from "components/BandaLista/BandaLista";
 import "./Home.css";
 import Navbar from "components/Navbar/Navbar";
-import AdicionaBandaModal from "components/AdicionaBandaModal/AdicionaBandaModal";
+import AdicionaEditaBandaModal from "components/AdicionaEditaBandaModal/AdicionaEditaBandaModal";
 
 function Home() {
   const [canShowAdicionaBandaModal, setCanShowAdicionaBandaModal] = useState(false);
@@ -13,7 +13,7 @@ function Home() {
       <div className="Home__container">
         <BandaLista bandaCriada={bandaParaAdicionar}/>
         {
-          canShowAdicionaBandaModal && (<AdicionaBandaModal closeModal={()=> setCanShowAdicionaBandaModal(false)}onCreateBanda={(banda) => setBandaParaAdicionar(banda)}/>)
+          canShowAdicionaBandaModal && (<AdicionaEditaBandaModal closeModal={()=> setCanShowAdicionaBandaModal(false)}onCreateBanda={(banda) => setBandaParaAdicionar(banda)}/>)
         }
       </div>
     </div>
